@@ -63,15 +63,20 @@ class Home extends Component {
 
   };  
 
+  clear = () =>{
+    this.setState({articles:""})
+    this.loadSavedBooks();
+  }
+
 
 
   render() {
 
 
     return (
-        <div>
+        <div className='row'>
             <Header name='New York Times Search' color='black'/> 
-            <Search click={this.searchClick}/> 
+            <Search click={this.searchClick} clear={this.clear}/> 
             <Header name='Results' color='darkblue'/> 
             { this.state.articles[0]===undefined? <Header name='' color='white'/> : 
               this.state.articles.map( (article,i) =>  <Results key={i} id={i} save={this.saveArticle} results={article}/>  ) }

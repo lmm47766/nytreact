@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 
+const styles = {
+  button:{
+    marginLeft:"35px",
+  }
+}
+
 class Search extends Component {
   state = {
     search: "",
@@ -19,9 +25,14 @@ class Search extends Component {
 
       return  this.props.click(this.state.search,this.state.startYear,this.state.endYear)
 
+  };
+
+  clearClick = (event) =>{
+      event.preventDefault();
+
+      return  this.props.clear()
+
   }
-
-
 
 
 
@@ -40,7 +51,8 @@ class Search extends Component {
           <p>End Year (Optional):</p>
           <input onChange={this.handleInputChange} name='endYear' type="text" placeholder='2000'/>  
 
-          <button type="submit" className="btn btn-default blue" onClick={this.searchClick}>Search</button>   
+          <button type="submit" className="btn btn-default blue" onClick={this.searchClick}>Search Results</button>
+          <button style={styles.button} type="submit" className="btn btn-default green"onClick={this.clearClick}>Clear Results</button>     
         </form>
       </div>
   )}
